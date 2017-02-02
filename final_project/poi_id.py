@@ -66,23 +66,26 @@ labels, features = targetFeatureSplit(data)
 ### http://scikit-learn.org/stable/modules/pipeline.html
 
 # Provided to give you a starting point. Try a variety of classifiers.
-# from sklearn.naive_bayes import GaussianNB
-# clf = GaussianNB()
+#from sklearn.naive_bayes import GaussianNB
+#clf = GaussianNB()
 
 from sklearn.tree import DecisionTreeClassifier
 clf = DecisionTreeClassifier(random_state=42)
 
-# ### Task 5: Tune your classifier to achieve better than .3 precision and recall
-# ### using our testing script. Check the tester.py script in the final project
-# ### folder for details on the evaluation method, especially the test_classifier
-# ### function. Because of the small size of the dataset, the script uses
-# ### stratified shuffle split cross validation. For more info:
-# ### http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.StratifiedShuffleSplit.html
+#from sklearn.ensemble import RandomForestClassifier
+#clf = RandomForestClassifier(random_state=42)
 
-# # Example starting point. Try investigating other evaluation techniques!
-# from sklearn.cross_validation import train_test_split
-# features_train, features_test, labels_train, labels_test = \
-#     train_test_split(features, labels, test_size=0.3, random_state=42)
+# # ### Task 5: Tune your classifier to achieve better than .3 precision and recall
+# # ### using our testing script. Check the tester.py script in the final project
+# # ### folder for details on the evaluation method, especially the test_classifier
+# # ### function. Because of the small size of the dataset, the script uses
+# # ### stratified shuffle split cross validation. For more info:
+# # ### http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.StratifiedShuffleSplit.html
+
+# # # Example starting point. Try investigating other evaluation techniques!
+# # from sklearn.cross_validation import train_test_split
+# # features_train, features_test, labels_train, labels_test = \
+# #     train_test_split(features, labels, test_size=0.3, random_state=42)
 
 param_grid = {"criterion" : ["gini", "entropy"],
               "max_depth": [None, 1, 2],
@@ -98,7 +101,8 @@ print clf.best_params_
 print clf.best_score_
 
 clf = clf.best_estimator_
-
+print clf
+print clf.feature_importances_
 
 ### Task 6: Dump your classifier, dataset, and features_list so anyone can
 ### check your results. You do not need to change anything below, but make sure
