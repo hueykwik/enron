@@ -1,4 +1,4 @@
-ud120-projects
+Enron Dataset
 ==============
 
-Starter project code for students taking Udacity ud120
+Identifying fraud from Enron public financial and e-mail data.
