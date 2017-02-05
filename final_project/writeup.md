@@ -25,7 +25,7 @@ The features I used were as follows, with feature importance in parenthesis:
 * fraction_from_poi (0.062)
 * fraction_to_poi (0.216)
 
-`fraction_from_poi` and `fraction_to_poi` were features that I engineered. The original dataset had features called `from_poi` and `to_poi`. The intuition is that while persons of interest may have more e-mails from and/or to other persons of interest, however, the percentage of emails sent to/from POIs is more useful than the absolute number. 
+`fraction_from_poi` and `fraction_to_poi` were features that I engineered. The original dataset had features called `from_poi` and `to_poi`. The intuition is that while persons of interest may have more e-mails from and/or to other persons of interest, however, the percentage of emails sent to/from POIs is more useful than the absolute number. When I added these two features, my precision and recall increased by 0.014 and 0.002.
 
 I created a correlation matrix of all the features and saw which features correlated most with being a person of interest. I set up a DecisionTreeClassifier and then added features one at a time. If a feature helped performance (see Validation section below for more details), then I’d keep it. If it hurt, then I’d remove it. 
 
@@ -57,7 +57,7 @@ I tuned my algorithm by using sklearn’s GridSearchCV, with the following param
 # Validation
 Validation is about testing whether or not our machine learning algorithm will generalize well, i.e. will work on data we have not yet seen. If we don’t do this well, we may end up with an algorithm that overfits to our training data and doesn’t actually predict well on new data.
 
-The way I validated my analysis was by using the `tester.py` script, which does 1000-fold cross validation.
+The way I validated my analysis was by using the `tester.py` script, which does 1000-fold cross validation. We use StratifiedShfufleSplit to make sure that each test set has the same ratio of non-POI:POI that we see in the original data.
 
 # Evaluation Metrics
 The average performance of my classifier:
